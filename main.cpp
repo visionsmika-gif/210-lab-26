@@ -18,6 +18,14 @@ const string FILE_NAME = "codes.txt";
 const string INSERT_VALUE = "TESTCODE";
 const int PRINT_WIDTH = 10;
 
+const int NUM_RUNS = 15;    // The experiment will run 15 times.
+const int NUM_RACES = 4;    // The 4 races in an experiment are reading, sorting, inserting, and deleting.
+const int NUM_DS = 3;       // The 3 data structures competing in the races are a vector, list, and set.
+
+// Enums for more readable and convenient indexing in the 3D array.
+enum Races { READ, SORT, INSERT, DELETE };
+enum DataStructures { VECTOR, LIST, SET };
+
 
 // Functions for RACE 1: Reading
 long long readVector(vector<string>& myVector);
@@ -40,8 +48,40 @@ long long deleteList(list<string>& myList);
 long long deleteSet(set<string>& mySet);
 
 int main() {
+    // 3D array to hold the results of each experiment.
+    long long timeResults[NUM_RUNS][NUM_RACES][NUM_DS];
+
+    // Loop to run 15 experiments.
+    // Each experiment has 4 races.
+    for (int i = 0; i < NUM_RUNS; ++i) {
+        // Data structures to compete in the races
+        vector<string> myVector;
+        list<string> myList;
+        set<string> mySet;
+
+        // RACE 1: Reading
+        timeResults[i][READ][VECTOR] = readVector(myVector);
+        timeResults[i][READ][LIST] = readList(myList);
+        timeResults[i][READ][SET] = readSet(mySet);
+
+        // RACE 2: Sorting
+        timeResults[i][SORT][VECTOR] = sortVector(myVector);
+        timeResults[i][SORT][LIST] = sortList(myList);
+        timeResults[i][SORT][SET] = sortSet(mySet);
+
+        // RACE 3: Inserting
+        timeResults[i][INSERT][VECTOR] = insertVector(myVector);
+        timeResults[i][INSERT][LIST] = insertList(myList);
+        timeResults[i][INSERT][SET] = insertSet(mySet);
+
+        // RACE 4: Deleting
+        timeResults[i][DELETE][VECTOR] = deleteVector(myVector);
+        timeResults[i][DELETE][LIST] = deleteList(myList);
+        timeResults[i][DELETE][SET] = deleteSet(mySet);
+    }
 
 
+    /*
     // Data structures to compete in the race
     vector<string> myVector;
     list<string> myList;
@@ -75,7 +115,7 @@ int main() {
     cout << setw(PRINT_WIDTH) << "Delete"
          << setw(PRINT_WIDTH) << deleteVector(myVector)
          << setw(PRINT_WIDTH) << deleteList(myList)
-         << setw(PRINT_WIDTH) << deleteSet(mySet) << "\n";
+         << setw(PRINT_WIDTH) << deleteSet(mySet) << "\n";*/
 
     return 0;
 }
