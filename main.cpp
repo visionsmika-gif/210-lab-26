@@ -51,6 +51,9 @@ int main() {
     // 3D array to hold the results of each experiment.
     long long timeResults[NUM_RUNS][NUM_RACES][NUM_DS];
 
+    // 2D array to hold the final accumulated the results of each experiment.
+    long long accResults[NUM_RACES][NUM_DS] = {0};
+
     // Loop to run 15 experiments.
     // Each experiment has 4 races.
     for (int i = 0; i < NUM_RUNS; ++i) {
@@ -58,6 +61,11 @@ int main() {
         vector<string> myVector;
         list<string> myList;
         set<string> mySet;
+
+        // Ensure that the data structures are clear at the start of each experiment.
+        myVector.clear();
+        myList.clear();
+        mySet.clear();
 
         // RACE 1: Reading
         timeResults[i][READ][VECTOR] = readVector(myVector);
@@ -78,6 +86,20 @@ int main() {
         timeResults[i][DELETE][VECTOR] = deleteVector(myVector);
         timeResults[i][DELETE][LIST] = deleteList(myList);
         timeResults[i][DELETE][SET] = deleteSet(mySet);
+    }
+
+    // Sum all the results of the experiments and store it in accResults.
+
+    // For each experiment,
+    for (int i = 0; i < NUM_RUNS; ++i) {
+        // For each race,
+        for (int j = 0; j < NUM_RACES; ++j) {
+            // For each data structure,
+            for (int k = 0; k < NUM_DS; ++k) {
+                
+            }
+        }
+
     }
 
 
