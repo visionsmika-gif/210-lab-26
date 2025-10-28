@@ -105,8 +105,8 @@ int main() {
         << setw(PRINT_WIDTH) << "Vector"
         << setw(PRINT_WIDTH) << "List"
         << setw(PRINT_WIDTH) << "Set" << "\n";*/
-
-    // Print results
+    
+    // Print results.
     // TODO: polish output and use a loop for efficiency
     cout << "Average results after running 15 experiments:\n\n";
     cout << "Race 1: reading\n";
