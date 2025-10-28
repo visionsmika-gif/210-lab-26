@@ -26,7 +26,6 @@ const int NUM_DS = 3;       // The 3 data structures competing in the races are 
 enum Races { READ, SORT, INSERT, DELETE };
 enum DataStructures { VECTOR, LIST, SET };
 
-
 // Functions for RACE 1: Reading
 long long readVector(vector<string>& myVector);
 long long readList(list<string>& myList);
@@ -88,19 +87,26 @@ int main() {
         timeResults[i][DELETE][SET] = deleteSet(mySet);
     }
 
-    // Sum all the results of the experiments and store it in accResults.
-
-    // For each experiment,
-    for (int i = 0; i < NUM_RUNS; ++i) {
-        // For each race,
-        for (int j = 0; j < NUM_RACES; ++j) {
-            // For each data structure,
-            for (int k = 0; k < NUM_DS; ++k) {
-                
+    // Now we must accumulate the results of each experiment.
+    // To do this, we iterate through the 3D array:
+    for (int i = 0; i < NUM_RUNS; ++i) {            // Dimension 1: number of experiments
+        for (int j = 0; j < NUM_RACES; ++j) {       // Dimension 2: number of races
+            for (int k = 0; k < NUM_DS; ++k) {      // Dimension 3: number of data structures
+                // Get the time results of a particular operation
+                // and sum it in the accumulator.
+                accResults[j][k] += timeResults[i][j][k];
             }
         }
-
     }
+
+    // Print header
+    cout << setw(PRINT_WIDTH) << "Operation"
+        << setw(PRINT_WIDTH) << "Vector"
+        << setw(PRINT_WIDTH) << "List"
+        << setw(PRINT_WIDTH) << "Set" << "\n";
+
+    
+
 
 
     /*
