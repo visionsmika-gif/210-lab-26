@@ -22,6 +22,10 @@ const int NUM_RUNS = 15;    // The experiment will run 15 times.
 const int NUM_RACES = 4;    // The 4 races in an experiment are reading, sorting, inserting, and deleting.
 const int NUM_DS = 3;       // The 3 data structures competing in the races are a vector, list, and set.
 
+// Arrays containing the names of the races and data structures for convenient printing.
+string races[NUM_RACES] = { "Read", "Sort", "Insert", "Delete" };
+string dataStructures[NUM_DS] = { "Vector", "List", "Set" };
+
 // Enums for more readable and convenient indexing in the 3D array.
 enum Races { READ, SORT, INSERT, DELETE };
 enum DataStructures { VECTOR, LIST, SET };
@@ -90,7 +94,7 @@ int main() {
 
     // Now we must accumulate the results of each experiment.
     // To do this, we iterate through the 3D array:
-    for (int i = 0; i < NUM_RUNS; ++i) {            // Dimension 1: number of experiments
+    for (int i = 0; i < NUM_RUNS; ++i) {            // Dimension 1: number of times the experiment ran
         for (int j = 0; j < NUM_RACES; ++j) {       // Dimension 2: number of races
             for (int k = 0; k < NUM_DS; ++k) {      // Dimension 3: number of data structures
                 // Get the time results of a particular operation
@@ -100,31 +104,19 @@ int main() {
         }
     }
 
-    /*// Print header
+    // Print the header.
     cout << setw(PRINT_WIDTH) << "Operation"
-        << setw(PRINT_WIDTH) << "Vector"
-        << setw(PRINT_WIDTH) << "List"
-        << setw(PRINT_WIDTH) << "Set" << "\n";*/
+         << setw(PRINT_WIDTH) << "Vector"
+         << setw(PRINT_WIDTH) << "List"
+         << setw(PRINT_WIDTH) << "Set" << "\n";
     
-    // Print results.
-    // TODO: polish output and use a loop for efficiency
-    cout << "Average results after running 15 experiments:\n\n";
-    cout << "Race 1: reading\n";
-    cout << accResults[READ][VECTOR] / NUM_RUNS << "\n";
-    cout << accResults[READ][LIST] / NUM_RUNS << "\n";
-    cout << accResults[READ][SET] / NUM_RUNS << "\n";
-    cout << "Race 2: sorting\n";
-    cout << accResults[SORT][VECTOR] / NUM_RUNS << "\n";
-    cout << accResults[SORT][LIST] / NUM_RUNS << "\n";
-    cout << accResults[SORT][SET] / NUM_RUNS << "\n";
-    cout << "Race 3: inserting\n";
-    cout << accResults[INSERT][VECTOR] / NUM_RUNS << "\n";
-    cout << accResults[INSERT][LIST] / NUM_RUNS << "\n";
-    cout << accResults[INSERT][SET] / NUM_RUNS << "\n";
-    cout << "Race 4: deleting\n";
-    cout << accResults[DELETE][VECTOR] / NUM_RUNS << "\n";
-    cout << accResults[DELETE][LIST] / NUM_RUNS << "\n";
-    cout << accResults[DELETE][SET] / NUM_RUNS << "\n";
+    // Output the results of each race.
+    for (int i = 0; i < NUM_RACES; ++i) {
+        cout << setw(PRINT_WIDTH) << races[i]                                   // Operation name
+             << setw(PRINT_WIDTH) << accResults[i][VECTOR] / NUM_RUNS           // Results for vector
+             << setw(PRINT_WIDTH) << accResults[i][LIST] / NUM_RUNS             // Results for list
+             << setw(PRINT_WIDTH) << accResults[i][SET] / NUM_RUNS << "\n";     // Results for set
+    }
 
 
     /*
