@@ -99,17 +99,20 @@ int main() {
             for (int k = 0; k < NUM_DS; ++k) {      // Dimension 3: number of data structures
                 // Get the time results of a particular operation
                 // and sum it in the accumulator.
+
                 accResults[j][k] += timeResults[i][j][k];
             }
         }
     }
 
     // Print the header.
-    cout << setw(PRINT_WIDTH) << "Operation"
-         << setw(PRINT_WIDTH) << "Vector"
-         << setw(PRINT_WIDTH) << "List"
-         << setw(PRINT_WIDTH) << "Set" << "\n";
-    
+    cout << "Number of simulations: " << NUM_RUNS << "\n";
+    cout << setw(PRINT_WIDTH) << "Operation";
+    for (int i = 0; i < NUM_DS; ++i) {
+        cout << setw(PRINT_WIDTH) << dataStructures[i];
+    }
+    cout << "\n";
+
     // Output the results of each race.
     for (int i = 0; i < NUM_RACES; ++i) {
         cout << setw(PRINT_WIDTH) << races[i]                                   // Operation name
@@ -117,43 +120,6 @@ int main() {
              << setw(PRINT_WIDTH) << accResults[i][LIST] / NUM_RUNS             // Results for list
              << setw(PRINT_WIDTH) << accResults[i][SET] / NUM_RUNS << "\n";     // Results for set
     }
-
-
-    /*
-    // Data structures to compete in the race
-    vector<string> myVector;
-    list<string> myList;
-    set<string> mySet;
-
-    // Print header
-    cout << setw(PRINT_WIDTH) << "Operation"
-         << setw(PRINT_WIDTH) << "Vector"
-         << setw(PRINT_WIDTH) << "List"
-         << setw(PRINT_WIDTH) << "Set" << "\n";
-
-    // RACE 1: Reading
-    cout << setw(PRINT_WIDTH) << "Read"
-         << setw(PRINT_WIDTH) << readVector(myVector)
-         << setw(PRINT_WIDTH) << readList(myList)
-         << setw(PRINT_WIDTH) << readSet(mySet) << "\n";
-
-    // RACE 2: Sorting
-    cout << setw(PRINT_WIDTH) << "Sort"
-         << setw(PRINT_WIDTH) << sortVector(myVector)
-         << setw(PRINT_WIDTH) << sortList(myList)
-         << setw(PRINT_WIDTH) << sortSet(mySet) << "\n";
-
-    // RACE 3: Inserting
-    cout << setw(PRINT_WIDTH) << "Insert"
-         << setw(PRINT_WIDTH) << insertVector(myVector)
-         << setw(PRINT_WIDTH) << insertList(myList)
-         << setw(PRINT_WIDTH) << insertSet(mySet) << "\n";
-
-    // RACE 4: Deleting
-    cout << setw(PRINT_WIDTH) << "Delete"
-         << setw(PRINT_WIDTH) << deleteVector(myVector)
-         << setw(PRINT_WIDTH) << deleteList(myList)
-         << setw(PRINT_WIDTH) << deleteSet(mySet) << "\n";*/
 
     return 0;
 }
