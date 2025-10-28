@@ -48,6 +48,7 @@ long long deleteSet(set<string>& mySet);
 
 int main() {
     // 3D array to hold the results of each experiment.
+    // Each cube slice represents 1 experiment, which has 4 races with 3 competitors.
     long long timeResults[NUM_RUNS][NUM_RACES][NUM_DS];
 
     // 2D array to hold the final accumulated the results of each experiment.
@@ -99,14 +100,31 @@ int main() {
         }
     }
 
-    // Print header
+    /*// Print header
     cout << setw(PRINT_WIDTH) << "Operation"
         << setw(PRINT_WIDTH) << "Vector"
         << setw(PRINT_WIDTH) << "List"
-        << setw(PRINT_WIDTH) << "Set" << "\n";
+        << setw(PRINT_WIDTH) << "Set" << "\n";*/
 
-    
-
+    // Print results
+    // TODO: polish output and use a loop for efficiency
+    cout << "Average results after running 15 experiments:\n\n";
+    cout << "Race 1: reading\n";
+    cout << accResults[READ][VECTOR] / NUM_RUNS << "\n";
+    cout << accResults[READ][LIST] / NUM_RUNS << "\n";
+    cout << accResults[READ][SET] / NUM_RUNS << "\n";
+    cout << "Race 2: sorting\n";
+    cout << accResults[SORT][VECTOR] / NUM_RUNS << "\n";
+    cout << accResults[SORT][LIST] / NUM_RUNS << "\n";
+    cout << accResults[SORT][SET] / NUM_RUNS << "\n";
+    cout << "Race 3: inserting\n";
+    cout << accResults[INSERT][VECTOR] / NUM_RUNS << "\n";
+    cout << accResults[INSERT][LIST] / NUM_RUNS << "\n";
+    cout << accResults[INSERT][SET] / NUM_RUNS << "\n";
+    cout << "Race 4: deleting\n";
+    cout << accResults[DELETE][VECTOR] / NUM_RUNS << "\n";
+    cout << accResults[DELETE][LIST] / NUM_RUNS << "\n";
+    cout << accResults[DELETE][SET] / NUM_RUNS << "\n";
 
 
     /*
