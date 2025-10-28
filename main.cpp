@@ -18,6 +18,7 @@ const string FILE_NAME = "codes.txt";
 const string INSERT_VALUE = "TESTCODE";
 const int PRINT_WIDTH = 10;
 
+
 // Functions for RACE 1: Reading
 long long readVector(vector<string>& myVector);
 long long readList(list<string>& myList);
@@ -39,6 +40,8 @@ long long deleteList(list<string>& myList);
 long long deleteSet(set<string>& mySet);
 
 int main() {
+
+
     // Data structures to compete in the race
     vector<string> myVector;
     list<string> myList;
