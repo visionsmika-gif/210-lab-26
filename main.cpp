@@ -116,13 +116,13 @@ int main() {
     for (int i = 0; i < NUM_RACES; ++i) {
         // Output the operation name
         cout << setw(PRINT_WIDTH) << races[i];
-
         // Output the results for vector
         cout << setw(PRINT_WIDTH) << accResults[i][VECTOR] / NUM_RUNS;
         // Output the results for list
         cout << setw(PRINT_WIDTH) << accResults[i][LIST] / NUM_RUNS;
         // Output the results for set
-        cout << setw(PRINT_WIDTH) << (i == SORT ? "0" : accResults[i][SET] / NUM_RUNS);
+        cout << setw(PRINT_WIDTH) << accResults[i][SET] / NUM_RUNS;
+    
         cout << "\n";
     }
 
@@ -241,9 +241,9 @@ long long sortList(list<string>& myList) {
 
 // Function to return the time it takes to sort a set.
 // Args:    a set
-// Returns: -1 (because a set is already sorted)
+// Returns: 0 (because a set is already sorted)
 long long sortSet(set<string>& mySet) {
-    return -1;
+    return 0;
 }
 
 // Function to return the time it takes insert an element in the middle of a vector.
