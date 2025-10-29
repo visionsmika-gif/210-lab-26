@@ -99,7 +99,6 @@ int main() {
             for (int k = 0; k < NUM_DS; ++k) {      // Dimension 3: number of data structures
                 // Get the time results of a particular operation
                 // and sum it in the accumulator.
-
                 accResults[j][k] += timeResults[i][j][k];
             }
         }
@@ -115,10 +114,16 @@ int main() {
 
     // Output the results of each race.
     for (int i = 0; i < NUM_RACES; ++i) {
-        cout << setw(PRINT_WIDTH) << races[i]                                   // Operation name
-             << setw(PRINT_WIDTH) << accResults[i][VECTOR] / NUM_RUNS           // Results for vector
-             << setw(PRINT_WIDTH) << accResults[i][LIST] / NUM_RUNS             // Results for list
-             << setw(PRINT_WIDTH) << accResults[i][SET] / NUM_RUNS << "\n";     // Results for set
+        // Output the operation name
+        cout << setw(PRINT_WIDTH) << races[i];
+
+        // Output the results for vector
+        cout << setw(PRINT_WIDTH) << accResults[i][VECTOR] / NUM_RUNS;
+        // Output the results for list
+        cout << setw(PRINT_WIDTH) << accResults[i][LIST] / NUM_RUNS;
+        // Output the results for set
+        cout << setw(PRINT_WIDTH) << (i == SORT ? "0" : accResults[i][SET] / NUM_RUNS);
+        cout << "\n";
     }
 
     return 0;
