@@ -22,7 +22,7 @@ const int NUM_RUNS = 15;    // The experiment will run 15 times.
 const int NUM_RACES = 4;    // The 4 races in an experiment are reading, sorting, inserting, and deleting.
 const int NUM_DS = 3;       // The 3 data structures competing in the races are a vector, list, and set.
 
-// Arrays containing the names of the races and data structures for convenient printing.
+// Arrays containing the names of the operations and data structures for convenient printing.
 string races[NUM_RACES] = { "Read", "Sort", "Insert", "Delete" };
 string dataStructures[NUM_DS] = { "Vector", "List", "Set" };
 
@@ -114,16 +114,10 @@ int main() {
 
     // Output the results of each race.
     for (int i = 0; i < NUM_RACES; ++i) {
-        // Output the operation name
-        cout << setw(PRINT_WIDTH) << races[i];
-        // Output the results for vector
-        cout << setw(PRINT_WIDTH) << accResults[i][VECTOR] / NUM_RUNS;
-        // Output the results for list
-        cout << setw(PRINT_WIDTH) << accResults[i][LIST] / NUM_RUNS;
-        // Output the results for set
-        cout << setw(PRINT_WIDTH) << accResults[i][SET] / NUM_RUNS;
-    
-        cout << "\n";
+        cout << setw(PRINT_WIDTH) << races[i]                               // Output the operation name
+             << setw(PRINT_WIDTH) << accResults[i][VECTOR] / NUM_RUNS       // Output vector results
+             << setw(PRINT_WIDTH) << accResults[i][LIST] / NUM_RUNS         // Output list results
+             << setw(PRINT_WIDTH) << accResults[i][SET] / NUM_RUNS << "\n"; // Output set results
     }
 
     return 0;
